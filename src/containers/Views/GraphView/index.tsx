@@ -15,7 +15,6 @@ import useUser from "src/store/useUser";
 import { NodeData } from "src/types/graph";
 import { CustomEdge } from "./CustomEdge";
 import { ErrorView } from "./ErrorView";
-import { PremiumView } from "./PremiumView";
 
 const Canvas = dynamic(() => import("reaflow").then(r => r.Canvas), {
   ssr: false,
@@ -183,10 +182,6 @@ export const Graph = ({ isWidget = false }: GraphProps) => {
   if (viewType === "tree") {
     setViewMode(ViewMode.Tree);
     toast("This document is too large to display as a graph. Switching to tree view.");
-  }
-
-  if (viewType === "premium" && !isWidget) {
-    if (!isPremium) return <PremiumView />;
   }
 
   return (
